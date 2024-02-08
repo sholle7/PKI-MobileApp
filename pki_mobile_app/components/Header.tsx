@@ -1,11 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity, Modal } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Icon from 'react-native-vector-icons/Octicons';
 import { useNavigation } from '@react-navigation/native';
-
-const Stack = createNativeStackNavigator();
 
 const Header = ({ isLoggedIn }: any) => {
   const [isMenuVisible, setIsMenuVisible] = useState(false);
@@ -30,13 +26,16 @@ const Header = ({ isLoggedIn }: any) => {
         />
       </View>
       {isLoggedIn && (
-        <TouchableOpacity onPress={toggleMenu}>
-          <Icon 
-            name='three-bars' 
-            size={30} 
-            color='#000' 
-          />
-        </TouchableOpacity>
+        <>
+          <View style={{ flex: 1 }} /> {/* Dodajte prazan View koji će puniti prostor */}
+          <TouchableOpacity onPress={toggleMenu} style={styles.hamburgerContainer}>
+            <Icon 
+              name='three-bars' 
+              size={30} 
+              color='#000' 
+            />
+          </TouchableOpacity>
+        </>
       )}
       <Modal
         animationType="slide"
@@ -47,23 +46,23 @@ const Header = ({ isLoggedIn }: any) => {
         }}
       >
         <View style={styles.menuModal}>
-          <TouchableOpacity onPress={() => navigateToPage('PromotionPage')}>
-            <Text>Promocije</Text>
+          <TouchableOpacity style={styles.menuItem} onPress={() => navigateToPage('PromotionPage')}>
+            <Text style={styles.text}>Promocije</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigateToPage('ProductsPage')}>
-            <Text>Proizvodi</Text>
+          <TouchableOpacity style={styles.menuItem} onPress={() => navigateToPage('ProductsPage')}>
+            <Text style={styles.text}>Proizvodi</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigateToPage('ContactPage')}>
-            <Text>Kontakt</Text>
+          <TouchableOpacity style={styles.menuItem} onPress={() => navigateToPage('ContactPage')}>
+            <Text style={styles.text}>Kontakt</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigateToPage('CartPage')}>
-            <Text>Korpa</Text>
+          <TouchableOpacity style={styles.menuItem} onPress={() => navigateToPage('CartPage')}>
+            <Text style={styles.text}>Korpa</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigateToPage('NotificationPage')}>
-            <Text>Obavestenje</Text>
+          <TouchableOpacity style={styles.menuItem} onPress={() => navigateToPage('NotificationPage')}>
+            <Text style={styles.text}>Obavestenje</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigateToPage('ProfilePAge')}>
-            <Text>Profil</Text>
+          <TouchableOpacity style={styles.menuItem} onPress={() => navigateToPage('ProfilePage')}>
+            <Text style={styles.text}>Profil</Text>
           </TouchableOpacity>
         </View>
       </Modal>
@@ -74,7 +73,6 @@ const Header = ({ isLoggedIn }: any) => {
 const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
     alignItems: 'center',
     padding: 10,
     backgroundColor: '#e0c0c0',
@@ -83,13 +81,26 @@ const styles = StyleSheet.create({
   logoContainer: {},
   logo: {
     width: 100, 
-    height: 60,
+    height: 60
+  },
+  hamburgerContainer: {
+    marginRight: 10
   },
   menuModal: {
-    backgroundColor: 'white',
+    backgroundColor: '#af4242',
     padding: 20,
     marginTop: 50,
+    gap: 20,
   },
+  menuItem: {
+    borderBottomWidth: 1,
+    borderBottomColor: 'black',
+    paddingBottom: 10,
+  },
+  text: {
+    color: "white",
+    textAlign: 'center'
+  }
 });
 
 export default Header;
