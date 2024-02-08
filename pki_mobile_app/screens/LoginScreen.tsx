@@ -1,27 +1,28 @@
+// LoginScreen.js
 import React from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, ImageBackground, Image, Dimensions } from 'react-native';
 import { users } from '../database/database';
-import { useNavigation } from '@react-navigation/native';
 
-
-const Backgoround = require("../assets/BackgroundWeb.png")
+const Background = require("../assets/BackgroundWeb.png");
 const { width, height } = Dimensions.get('window');
 
-const LoginScreen = ({navigation}: any) => {
+const LoginScreen = ({ navigation, onLoginSuccess }: any) => {
   const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
+
   const handleLogin = () => {
     const user = users.find(user => user.username === username && user.password === password);
-    if(user != null){
-      navigation.navigate('PromotionPage');
+    if (user != null) {
+      onLoginSuccess();
+      navigation.navigate('ProductsPage');
     }
   };
 
   return (
     <View style={styles.backGroundContainer}>
-     <ImageBackground source={Backgoround} style={styles.backgroundImage}>
-      <View style={styles.container}>
-          <Text style={styles.titles}>Korisnicko ime:</Text>
+      <ImageBackground source={Background} style={styles.backgroundImage}>
+        <View style={styles.container}>
+          <Text style={styles.titles}>Korisničko ime:</Text>
           <TextInput
             style={styles.input}
             placeholder="Unesite korisničko ime"
@@ -40,9 +41,9 @@ const LoginScreen = ({navigation}: any) => {
           <TouchableOpacity style={styles.button} onPress={handleLogin}>
             <Text style={styles.buttonText}>Login</Text>
           </TouchableOpacity>
-      </View>
-    </ImageBackground>
-  </View>
+        </View>
+      </ImageBackground>
+    </View>
   );
 };
 
