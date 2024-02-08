@@ -3,11 +3,13 @@ import { View, Text, StyleSheet, Image, TouchableOpacity, Modal } from 'react-na
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Icon from 'react-native-vector-icons/Octicons';
+import { useNavigation } from '@react-navigation/native';
 
 const Stack = createNativeStackNavigator();
 
-const Header = ({ isLoggedIn, navigation }: any) => {
+const Header = ({ isLoggedIn }: any) => {
   const [isMenuVisible, setIsMenuVisible] = useState(false);
+  const navigation = useNavigation();
 
   const toggleMenu = () => {
     setIsMenuVisible(!isMenuVisible);

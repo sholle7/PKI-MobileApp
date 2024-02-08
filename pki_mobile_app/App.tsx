@@ -23,8 +23,8 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Header isLoggedIn={isLoggedIn} />
       <NavigationContainer>
+      <Header isLoggedIn={isLoggedIn} />
         <Stack.Navigator>
           <Stack.Screen 
             name="LoginScreenPage" 
