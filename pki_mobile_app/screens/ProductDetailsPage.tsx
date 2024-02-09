@@ -73,7 +73,7 @@ const ProductDetailsPage = ({ route }: any) => {
         <Ionicons name="arrow-back" size={24} color="black" />
       </TouchableOpacity>
       <View style={styles.productDetails}>
-        <Image source={images[productId]} style={styles.productImage} />
+        <Image source={images[productId - 1]} style={styles.productImage} />
         <Text style={styles.productName}>{product?.name}</Text>
         <Text style={styles.productDescription}>{product?.description}</Text>
         <Text style={styles.productDescription}>Cena: {product?.price} RSD</Text>

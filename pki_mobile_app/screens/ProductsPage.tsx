@@ -31,7 +31,7 @@ const ProductsPage = () => {
   const renderItem = ({ item }: any) => (
     <TouchableOpacity onPress={() => navigateToProductDetails(item.id)}>
       <View style={styles.item}>
-        <Image source={images[item.id]} style={styles.image} />
+        <Image source={images[item.id - 1]} style={styles.image} />
         <Text style={styles.name}>{item.name}</Text>
         <Text style={styles.description}>{item.description}</Text>
       </View>

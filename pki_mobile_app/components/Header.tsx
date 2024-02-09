@@ -27,7 +27,7 @@ const Header = ({ isLoggedIn }: any) => {
       </View>
       {isLoggedIn && (
         <>
-          <View style={{ flex: 1 }} /> {/* Dodajte prazan View koji će puniti prostor */}
+          <View style={{ flex: 1 }} />
           <TouchableOpacity onPress={toggleMenu} style={styles.hamburgerContainer}>
             <Icon 
               name='three-bars' 

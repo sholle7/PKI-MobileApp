@@ -75,7 +75,7 @@ const CartPage = ({ route }: any) => {
           return (
             <View key={productId} style={styles.cartItem}>
               <Text style={styles.productName}>{product?.name}</Text>
-              <Image source={images[productId]} style={styles.productImage} />
+              <Image source={images[productId - 1]} style={styles.productImage} />
               <Text style={{marginRight: 10}}>X {quantity}</Text>
               <Text>{product!.price * quantity} RSD</Text>
             </View>
