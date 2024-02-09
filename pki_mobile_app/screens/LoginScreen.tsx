@@ -13,7 +13,7 @@ const LoginScreen = ({ navigation, onLoginSuccess }: any) => {
   const handleLogin = () => {
     const user = users.find(user => user.username === username && user.password === password);
     if (user != null) {
-      onLoginSuccess();
+      onLoginSuccess(user);
       navigation.navigate('PromotionPage');
     }
   };
