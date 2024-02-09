@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList, StyleSheet } from 'react-native';
 import { notifications } from '../database/database';
 import { Notification } from '../models/Notification';
-import { User } from '../models/User';
 
 const NotificationPage = ({route}: any) => {
   const loggedInUser = route.params.loggedInUser;

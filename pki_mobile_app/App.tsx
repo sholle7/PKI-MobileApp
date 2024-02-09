@@ -12,6 +12,7 @@ import NotificationPage from './screens/NotificationPage';
 import ProfilePage from './screens/ProfilePage';
 import PromotionPage from './screens/PromotionPage';
 import { User } from './models/User';
+import ProductDetailsPage from './screens/ProductDetailsPage';
 
 const Stack = createNativeStackNavigator();
 
@@ -48,6 +49,12 @@ export default function App() {
             options={{ headerShown: false }} 
             initialParams={{ loggedInUser: loggedInUser }}
           />     
+          <Stack.Screen
+            name="ProductDetailsPage"
+            component={ProductDetailsPage}
+            options={{ headerShown: false }} 
+            initialParams={{ loggedInUser: loggedInUser }}
+          />
           <Stack.Screen 
             name="ContactPage" 
             component={ContactPage} 

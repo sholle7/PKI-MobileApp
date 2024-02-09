@@ -1,7 +1,8 @@
 import React from 'react';
-import { View, Text, FlatList, Image, StyleSheet } from 'react-native';
+import { View, Text, FlatList, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { products } from '../database/database';
 import { Types } from '../models/Product';
+import { useNavigation } from '@react-navigation/native';
 
 const ParfeTorta = require("../assets/parfeTorta.jpg");
 const CokoladnaTorta = require("../assets/cokoladnaTorta.jpg");
@@ -21,13 +22,20 @@ const images = [ ParfeTorta, CokoladnaTorta, VocnaTorta, RafaeloTorta, ReformaTo
 const ProductsPage = () => {
   const torte = products.filter(product => product.type === Types.cake);
   const kolaci = products.filter(product => product.type === Types.pastry);
+  const navigation = useNavigation();
+
+  const navigateToProductDetails = (productId: number) => {
+    navigation.navigate('ProductDetailsPage', { productId: productId });
+  };
 
   const renderItem = ({ item }: any) => (
-    <View style={styles.item}>
-      <Image source={images[item.id]} style={styles.image} />
-      <Text style={styles.name}>{item.name}</Text>
-      <Text style={styles.description}>{item.description}</Text>
-    </View>
+    <TouchableOpacity onPress={() => navigateToProductDetails(item.id)}>
+      <View style={styles.item}>
+        <Image source={images[item.id]} style={styles.image} />
+        <Text style={styles.name}>{item.name}</Text>
+        <Text style={styles.description}>{item.description}</Text>
+      </View>
+    </TouchableOpacity>
   );
 
   return (
