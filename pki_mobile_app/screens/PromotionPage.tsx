@@ -40,7 +40,7 @@ const BuyerPromotions = () => {
         <Text style={styles.productName}>{products[productId - 1].name}</Text>
         <Image
          source={images[productId - 1]}
-          style={styles.productImage}
+         style={styles.productImage}
         />
         <View style={styles.descriptionWrapper}>
           <Text style={styles.productDescription}>{products[productId - 1].description}</Text>
