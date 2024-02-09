@@ -165,18 +165,21 @@ export let users: User[] = [
 
   export let notifications: Notification[] = [
     {
+      id: 1,
       date: new Date(),
       userId: 1,
       status: true,
       text: "Vasa narudzbina sa id 1 je uspesno prihvacena"
     },
     {
+      id: 2,
       date: new Date(),
       userId: 1,
       status: false,
       text: "Vasa narudzbina sa id 2 nije uspesno prihvacena"
     },
     {
+      id: 3,
       date: new Date(),
       userId: 1,
       status: true,
